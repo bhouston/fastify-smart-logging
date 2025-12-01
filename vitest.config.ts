@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [
     tsConfigPaths({
       projects: [
-        './packages/fastify-smart-logging/tsconfig.json',
+        './packages/fastify-log-filters/tsconfig.json',
         './demos/basic-example/tsconfig.json',
       ],
     }),

@@ -1,11 +1,11 @@
 import Fastify from 'fastify';
+import { fastifyLogFilters } from 'fastify-log-filters';
 import { fastifyFileRouter } from 'fastify-file-router';
-import { fastifySmartLogging } from 'fastify-smart-logging';
 
 async function main() {
   const app = Fastify();
 
-  await app.register(fastifySmartLogging, {
+  await app.register(fastifyLogFilters, {
     logSlowResponsesThreshold: 0,
     logNonSuccesses: true,
   });

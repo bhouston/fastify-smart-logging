@@ -12,7 +12,7 @@
   "dependencies": {
     "fastify": "^5.0.0",
     "fastify-file-router": "^1.6.4",
-    "fastify-smart-logging": "workspace:*",
+    "fastify-log-filters": "workspace:*",
     "zod": "^3.24.2"
   },
   "devDependencies": {

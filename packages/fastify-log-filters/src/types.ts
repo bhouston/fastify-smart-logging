@@ -19,14 +19,14 @@ export interface LogAction {
   tag?: string;
 }
 
-export type LogFilter = (ctx: LogContext) => Partial<LogAction> | null | undefined;
+export type LogFilters = (ctx: LogContext) => Partial<LogAction> | null | undefined;
 
 export interface Logger {
   info(message: string): void;
   error(message: string): void;
 }
 
-export interface LogFilterOptions {
+export interface LogFiltersOptions {
   /**
    * If > 0, responses with duration >= threshold will always be considered for logging.
    * If 0, all responses are considered (i.e. the plugin behaves like a normal access logger).
@@ -44,17 +44,17 @@ export interface LogFilterOptions {
    * Optional custom filters to participate in the log decision.
    * They are applied after the built-in filters.
    */
-  filters?: LogFilter[];
+  filters?: LogFilters[];
   /**
    * Optional logger interface. Defaults to `console`.
    */
   logger?: Logger;
 }
 
-export interface ResolvedLogFilterOptions {
+export interface ResolvedLogFiltersOptions {
   logSlowResponsesThreshold: number;
   logNonSuccesses: boolean;
   maxBodyLength: number;
-  filters: LogFilter[];
+  filters: LogFilters[];
   logger: Logger;
 }

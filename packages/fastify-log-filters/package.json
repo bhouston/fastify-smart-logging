@@ -1,5 +1,5 @@
 {
-  "name": "fastify-log-filter",
+  "name": "fastify-log-filters",
   "description": "A Fastify plugin for conditional, filtered request/response logging: hide boring fast 2xxs, highlight slow and failed requests.",
   "version": "0.0.1",
   "type": "module",
@@ -21,13 +21,13 @@
     "nodejs",
     "typescript"
   ],
-  "homepage": "https://github.com/bhouston/fastify-smart-logging#readme",
+  "homepage": "https://github.com/bhouston/fastify-log-filters#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bhouston/fastify-smart-logging"
+    "url": "git+https://github.com/bhouston/fastify-log-filters"
   },
   "bugs": {
-    "url": "https://github.com/bhouston/fastify-smart-logging/issues"
+    "url": "https://github.com/bhouston/fastify-log-filters/issues"
   },
   "files": [
     "dist",
@@ -36,6 +36,7 @@
     "LICENSE"
   ],
   "dependencies": {
+    "fastify-log-filters": "workspace:*",
     "chalk": "^5.6.2",
     "fastify": "^5.0.0",
     "fastify-plugin": "^5.0.1",

@@ -1,7 +1,7 @@
 import fastify from 'fastify';
 import { describe, expect, it } from 'vitest';
-import { fastifyLogFilter } from './index.js';
-import type { Logger, LogFilterOptions } from './types.js';
+import { fastifyLogFilters } from './index.js';
+import type { Logger, LogFiltersOptions } from './types.js';
 
 function createCollectingLogger() {
   const infoMessages: string[] = [];
@@ -19,11 +19,11 @@ function createCollectingLogger() {
   return { logger, infoMessages, errorMessages };
 }
 
-async function createApp(options: LogFilterOptions) {
+async function createApp(options: LogFiltersOptions) {
   const app = fastify();
   const { logger, infoMessages, errorMessages } = createCollectingLogger();
 
-  await app.register(fastifyLogFilter, {
+  await app.register(fastifyLogFilters, {
     ...options,
     logger,
   });

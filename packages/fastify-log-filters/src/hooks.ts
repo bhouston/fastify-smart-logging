@@ -1,11 +1,11 @@
 import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import { computePayloadLength } from './compute-length.js';
-import { baseShouldLogFilter, errorColorFilter, evaluateFilters, slowColorFilter } from './decision.js';
+import { baseShouldLogFilters, errorColorFilter, evaluateFilters, slowColorFilter } from './decision.js';
 import { formatErrorMainLine, formatErrorStackLine, formatResponseLine } from './format.js';
 import { resolveOptions } from './options.js';
 import { requestLoggedSymbol, type TimedFastifyRequest, timeoutHandleSymbol } from './symbols.js';
 import { formatDurationMs, getDurationMs, getRequestStart, markRequestStart } from './timing.js';
-import type { LogAction, LogContext, ResolvedLogFilterOptions, LogFilterOptions } from './types.js';
+import type { LogAction, LogContext, ResolvedLogFiltersOptions, LogFiltersOptions } from './types.js';
 
 function createResponseContext(
   request: FastifyRequest,
@@ -41,12 +41,12 @@ function createErrorContext(
   };
 }
 
-function buildFilters(options: ResolvedLogFilterOptions) {
-  const filters = [baseShouldLogFilter(options), slowColorFilter(options), errorColorFilter(), ...options.filters];
+function buildFilters(options: ResolvedLogFiltersOptions) {
+  const filters = [baseShouldLogFilters(options), slowColorFilter(options), errorColorFilter(), ...options.filters];
   return filters;
 }
 
-export function registerFastifyLogFilter(app: FastifyInstance, options: LogFilterOptions = {}): void {
+export function registerFastifyLogFilters(app: FastifyInstance, options: LogFiltersOptions = {}): void {
   const resolved = resolveOptions(options);
   const filters = buildFilters(resolved);
   const { logSlowResponsesThreshold, logger, maxBodyLength } = resolved;

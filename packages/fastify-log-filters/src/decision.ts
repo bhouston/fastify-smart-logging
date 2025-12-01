@@ -1,6 +1,6 @@
-import type { LogAction, LogContext, LogFilter, ResolvedLogFilterOptions } from './types.js';
+import type { LogAction, LogContext, LogFilters, ResolvedLogFiltersOptions } from './types.js';
 
-export function baseShouldLogFilter(options: ResolvedLogFilterOptions): LogFilter {
+export function baseShouldLogFilters(options: ResolvedLogFiltersOptions): LogFilters {
   const { logSlowResponsesThreshold, logNonSuccesses } = options;
 
   return (ctx) => {
@@ -27,7 +27,7 @@ export function baseShouldLogFilter(options: ResolvedLogFilterOptions): LogFilte
   };
 }
 
-export function errorColorFilter(): LogFilter {
+export function errorColorFilter(): LogFilters {
   return (ctx) => {
     if (ctx.phase !== 'response' && ctx.phase !== 'error') {
       return null;
@@ -39,7 +39,7 @@ export function errorColorFilter(): LogFilter {
   };
 }
 
-export function slowColorFilter(options: ResolvedLogFilterOptions): LogFilter {
+export function slowColorFilter(options: ResolvedLogFiltersOptions): LogFilters {
   const { logSlowResponsesThreshold } = options;
 
   if (logSlowResponsesThreshold <= 0) {
@@ -60,7 +60,7 @@ export function slowColorFilter(options: ResolvedLogFilterOptions): LogFilter {
 
 export function evaluateFilters(
   ctx: LogContext,
-  filters: LogFilter[],
+  filters: LogFilters[],
   defaultAction: LogAction = { visibility: 'hide' },
 ): LogAction {
   const result: LogAction = { ...defaultAction };

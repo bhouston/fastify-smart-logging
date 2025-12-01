@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { baseShouldLogFilter, errorColorFilter, evaluateFilters, slowColorFilter } from './decision.js';
-import type { LogContext, ResolvedLogFilterOptions } from './types.js';
+import { baseShouldLogFilters, errorColorFilter, evaluateFilters, slowColorFilter } from './decision.js';
+import type { LogContext, ResolvedLogFiltersOptions } from './types.js';
 
 const baseCtx: Omit<LogContext, 'phase'> = {
   method: 'GET',
@@ -10,7 +10,7 @@ const baseCtx: Omit<LogContext, 'phase'> = {
   durationMs: 10,
 };
 
-const resolvedDefaults: ResolvedLogFilterOptions = {
+const resolvedDefaults: ResolvedLogFiltersOptions = {
   logSlowResponsesThreshold: 0,
   logNonSuccesses: true,
   maxBodyLength: 200,
@@ -21,16 +21,16 @@ const resolvedDefaults: ResolvedLogFilterOptions = {
   },
 };
 
-describe('baseShouldLogFilter', () => {
+describe('baseShouldLogFilters', () => {
   it('logs everything when threshold is 0', () => {
-    const filter = baseShouldLogFilter(resolvedDefaults);
+    const filter = baseShouldLogFilters(resolvedDefaults);
     const ctx: LogContext = { ...baseCtx, phase: 'response' };
     const result = filter(ctx);
     expect(result?.visibility).toBe('show');
   });
 
   it('hides fast 2xx responses when threshold > 0', () => {
-    const filter = baseShouldLogFilter({
+    const filter = baseShouldLogFilters({
       ...resolvedDefaults,
       logSlowResponsesThreshold: 100,
     });
@@ -40,7 +40,7 @@ describe('baseShouldLogFilter', () => {
   });
 
   it('shows slow 2xx responses when threshold > 0', () => {
-    const filter = baseShouldLogFilter({
+    const filter = baseShouldLogFilters({
       ...resolvedDefaults,
       logSlowResponsesThreshold: 50,
     });
@@ -50,7 +50,7 @@ describe('baseShouldLogFilter', () => {
   });
 
   it('shows non-success responses when enabled', () => {
-    const filter = baseShouldLogFilter({
+    const filter = baseShouldLogFilters({
       ...resolvedDefaults,
       logSlowResponsesThreshold: 100,
       logNonSuccesses: true,
@@ -92,11 +92,11 @@ describe('color filters', () => {
 describe('evaluateFilters', () => {
   it('applies filters and merges actions', () => {
     const ctx: LogContext = { ...baseCtx, phase: 'response', statusCode: 500, durationMs: 200 };
-    const options: ResolvedLogFilterOptions = {
+    const options: ResolvedLogFiltersOptions = {
       ...resolvedDefaults,
       logSlowResponsesThreshold: 100,
     };
-    const filters = [baseShouldLogFilter(options), slowColorFilter(options), errorColorFilter()];
+    const filters = [baseShouldLogFilters(options), slowColorFilter(options), errorColorFilter()];
     const result = evaluateFilters(ctx, filters, { visibility: 'hide' });
 
     expect(result.visibility).toBe('show');

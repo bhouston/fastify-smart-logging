@@ -1,22 +1,22 @@
-# fastify-log-filter
+# fastify-log-filters
 
 A Fastify plugin for conditional, filtered request/response logging: hide boring fast 2xxs, highlight slow and failed requests.
 
 ## Installation
 
 ```bash
-pnpm add fastify-log-filter
+pnpm add fastify-log-filters
 ```
 
 ## Usage
 
 ```ts
 import Fastify from 'fastify';
-import { fastifyLogFilter } from 'fastify-log-filter';
+import { fastifyLogFilters } from 'fastify-log-filters';
 
 const app = Fastify();
 
-await app.register(fastifyLogFilter, {
+await app.register(fastifyLogFilters, {
   // Log all requests and errors
   logSlowResponsesThreshold: 0,
   // Also log non-2xx responses

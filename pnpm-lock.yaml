@@ -56,9 +56,9 @@ importers:
       fastify-file-router:
         specifier: ^1.6.4
         version: 1.6.4(fastify@5.6.2)
-      fastify-smart-logging:
+      fastify-log-filters:
         specifier: workspace:*
-        version: link:../../packages/fastify-smart-logging
+        version: link:../../packages/fastify-log-filters
       zod:
         specifier: ^3.24.2
         version: 3.25.76
@@ -70,7 +70,7 @@ importers:
         specifier: ^2.1.8
         version: 2.1.9(@types/node@24.10.1)(@vitest/ui@2.1.9)
 
-  packages/fastify-smart-logging:
+  packages/fastify-log-filters:
     dependencies:
       chalk:
         specifier: ^5.6.2
@@ -78,6 +78,9 @@ importers:
       fastify:
         specifier: ^5.0.0
         version: 5.6.2
+      fastify-log-filters:
+        specifier: workspace:*
+        version: 'link:'
       fastify-plugin:
         specifier: ^5.0.1
         version: 5.1.0

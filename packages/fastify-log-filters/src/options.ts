@@ -1,4 +1,4 @@
-import type { LogFilter, ResolvedLogFilterOptions, ≈, LogFilterOptions, Logger } from './types.js';
+import type { LogFilters, ResolvedLogFiltersOptions, LogFiltersOptions, Logger } from './types.js';
 
 const defaultMaxBodyLength = 200;
 
@@ -17,7 +17,7 @@ function resolveLogger(logger?: Logger): Logger {
   };
 }
 
-export function resolveOptions(options: LogFilterOptions = {}): ResolvedLogFilterOptions {
+export function resolveOptions(options: LogFiltersOptions = {}): ResolvedLogFiltersOptions {
   const {
     logSlowResponsesThreshold = 0,
     logNonSuccesses = true,
@@ -26,7 +26,7 @@ export function resolveOptions(options: LogFilterOptions = {}): ResolvedLogFilte
     logger,
   } = options;
 
-  const resolvedFilters: LogFilter[] = [...filters];
+  const resolvedFilters: LogFilters[] = [...filters];
 
   return {
     logSlowResponsesThreshold,
