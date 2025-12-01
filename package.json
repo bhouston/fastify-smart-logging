@@ -1,5 +1,5 @@
 {
-  "name": "fastify-smart-logging-monorepo",
+  "name": "fastify-log-filter-monorepo",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -8,7 +8,7 @@
     "build": "pnpm -r build",
     "dev": "pnpm -r --parallel dev",
     "start": "pnpm --filter basic-example start",
-    "release": "pnpm --filter fastify-smart-logging run release",
+    "release": "pnpm --filter fastify-log-filter run release",
     "make-release": "node scripts/make-release.ts packages/fastify-smart-logging",
     "clean": "rimraf dist packages/**/dist demos/**/dist .nx node_modules packages/**/node_modules demos/**/node_modules",
     "check": "biome check --write",

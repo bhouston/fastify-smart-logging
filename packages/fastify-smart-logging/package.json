@@ -1,6 +1,6 @@
 {
-  "name": "fastify-smart-logging",
-  "description": "A Fastify plugin for concise, smart request/response and error logging.",
+  "name": "fastify-log-filter",
+  "description": "A Fastify plugin for conditional, filtered request/response logging: hide boring fast 2xxs, highlight slow and failed requests.",
   "version": "0.0.1",
   "type": "module",
   "main": "dist/index.js",

@@ -1,22 +1,22 @@
-# fastify-smart-logging
+# fastify-log-filter
 
-A Fastify plugin for concise, smart request/response and error logging.
+A Fastify plugin for conditional, filtered request/response logging: hide boring fast 2xxs, highlight slow and failed requests.
 
 ## Installation
 
 ```bash
-pnpm add fastify-smart-logging
+pnpm add fastify-log-filter
 ```
 
 ## Usage
 
 ```ts
 import Fastify from 'fastify';
-import { fastifySmartLogging } from 'fastify-smart-logging';
+import { fastifyLogFilter } from 'fastify-log-filter';
 
 const app = Fastify();
 
-await app.register(fastifySmartLogging, {
+await app.register(fastifyLogFilter, {
   // Log all requests and errors
   logSlowResponsesThreshold: 0,
   // Also log non-2xx responses
@@ -28,5 +28,4 @@ await app.register(fastifySmartLogging, {
 
 - `logSlowResponsesThreshold?: number` – If set to `0` (default), all requests are logged as they begin. If set to a positive number (in milliseconds), any request that runs longer than this threshold will be logged, as well as any non-success responses when `logNonSuccesses` is `true`.
 - `logNonSuccesses?: boolean` – When `true` (default), 4xx and 5xx responses are logged along with their response bodies (truncated for very large payloads).
-
 
