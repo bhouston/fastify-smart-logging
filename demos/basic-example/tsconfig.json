@@ -1,13 +1,10 @@
 {
   "extends": "../../tsconfig.node.json",
-  "include": ["src"],
   "compilerOptions": {
-    "module": "NodeNext",
+    "composite": true,
     "noEmit": true,
-    "allowImportingTsExtensions": true,
-    "declaration": false,
-    "moduleResolution": "NodeNext"
-  }
+    "declaration": true
+  },
+  "include": ["src"],
+  "references": [{ "path": "../../packages/fastify-log-filters" }]
 }
-
-

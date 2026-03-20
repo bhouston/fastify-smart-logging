@@ -1,7 +1,31 @@
 {
   "name": "fastify-log-filters",
-  "description": "A Fastify plugin for conditional, filtered request/response logging: hide boring fast 2xxs, highlight slow and failed requests.",
   "version": "0.0.1",
+  "description": "A Fastify plugin for conditional, filtered request/response logging: hide boring fast 2xxs, highlight slow and failed requests.",
+  "keywords": [
+    "fastify",
+    "http",
+    "logging",
+    "nodejs",
+    "plugin",
+    "typescript"
+  ],
+  "homepage": "https://github.com/bhouston/fastify-log-filters#readme",
+  "bugs": {
+    "url": "https://github.com/bhouston/fastify-log-filters/issues"
+  },
+  "license": "MIT",
+  "author": "Ben Houston <neuralsoft@gmail.com> (https://benhouston3d.com)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhouston/fastify-log-filters"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,59 +35,32 @@
       "import": "./dist/index.js"
     }
   },
-  "license": "MIT",
-  "author": "Ben Houston <neuralsoft@gmail.com> (https://benhouston3d.com)",
-  "keywords": [
-    "logging",
-    "http",
-    "fastify",
-    "plugin",
-    "nodejs",
-    "typescript"
-  ],
-  "homepage": "https://github.com/bhouston/fastify-log-filters#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bhouston/fastify-log-filters"
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
-  "bugs": {
-    "url": "https://github.com/bhouston/fastify-log-filters/issues"
+  "scripts": {
+    "build": "tsgo",
+    "dev": "tsgo -w --preserveWatchOutput --noEmitOnError",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "release": "pnpm build && rm -rf ./publish && mkdir ./publish && cp ./package.json ./publish/package.json && cp ../../LICENSE ./publish/LICENSE && cp ../../README.md ./publish/README.md && cp -r ./dist ./publish/dist && test -f ./publish/README.md || (echo 'ERROR: README.md not found in publish folder' && exit 1) && npm publish ./publish/ --access public"
   },
-  "files": [
-    "dist",
-    "package.json",
-    "README.md",
-    "LICENSE"
-  ],
   "dependencies": {
-    "fastify-log-filters": "workspace:*",
     "chalk": "^5.6.2",
     "fastify": "^5.0.0",
+    "fastify-log-filters": "workspace:*",
     "fastify-plugin": "^5.0.1",
-    "humanize-units": "^2.0.3"
-  },
-  "peerDependencies": {
-    "fastify": "^5.0.0"
+    "humanize-units": "^2.0.4"
   },
   "devDependencies": {
     "@types/node": "^24",
     "vitest": "^2.1.8"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
+  "peerDependencies": {
+    "fastify": "^5.0.0"
   },
   "engines": {
     "node": ">=24.0.0"
-  },
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "tsc": "tsc",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "release": "pnpm build && rm -rf ./publish && mkdir ./publish && cp ./package.json ./publish/package.json && cp ../../LICENSE ./publish/LICENSE && cp ../../README.md ./publish/README.md && cp -r ./dist ./publish/dist && test -f ./publish/README.md || (echo 'ERROR: README.md not found in publish folder' && exit 1) && npm publish ./publish/ --access public"
   }
 }
-
-

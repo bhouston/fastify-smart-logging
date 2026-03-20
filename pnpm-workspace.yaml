@@ -6,5 +6,3 @@ link-workspace-packages: true
 
 onlyBuiltDependencies:
   - esbuild
-
-

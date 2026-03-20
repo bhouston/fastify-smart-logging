@@ -4,10 +4,7 @@ import tsConfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
   plugins: [
     tsConfigPaths({
-      projects: [
-        './packages/fastify-log-filters/tsconfig.json',
-        './demos/basic-example/tsconfig.json',
-      ],
+      projects: ['./packages/fastify-log-filters/tsconfig.json', './demos/basic-example/tsconfig.json'],
     }),
   ],
   test: {
@@ -33,5 +30,3 @@ export default defineConfig({
     },
   },
 });
-
-
