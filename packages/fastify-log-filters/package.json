@@ -15,7 +15,7 @@
     "url": "https://github.com/bhouston/fastify-log-filters/issues"
   },
   "license": "MIT",
-  "author": "Ben Houston <neuralsoft@gmail.com> (https://ben3d.ca)",
+  "author": "Ben Houston <ben@ben3d.ca> (https://ben3d.ca)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bhouston/fastify-log-filters"
@@ -49,7 +49,6 @@
   "dependencies": {
     "chalk": "^5.6.2",
     "fastify": "^5.0.0",
-    "fastify-log-filters": "workspace:*",
     "fastify-plugin": "^5.0.1",
     "humanize-units": "^2.0.4"
   },
