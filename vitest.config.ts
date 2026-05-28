@@ -1,4 +1,9 @@
-import { defineConfig } from 'vitest/config';
+import { configDefaults, coverageConfigDefaults, defineConfig } from 'vitest/config';
+
+const sourceTestGlobs = [
+  'packages/**/src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
+  'demos/**/src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
+];
 
 export default defineConfig({
   resolve: {
@@ -7,23 +12,12 @@ export default defineConfig({
   test: {
     watch: false,
     isolate: false,
+    include: sourceTestGlobs,
+    exclude: [...configDefaults.exclude, '**/build/**', '**/publish/**', '**/.next/**', '**/.nx/**', '**/.turbo/**'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html', 'lcov'],
-      exclude: [
-        '**/node_modules',
-        '**/coverage',
-        '**/scripts',
-        '**/dist',
-        '**/*.test.ts',
-        '**/*.spec.ts',
-        '**/test',
-        '**/tests',
-        '**/*.d.ts',
-        '**/vitest.config.ts',
-        '**/vitest.config.js',
-        '**/publish',
-      ],
+      exclude: [...coverageConfigDefaults.exclude, '**/scripts/**', '**/publish/**'],
     },
   },
 });
