@@ -52,10 +52,6 @@
     "fastify-plugin": "^5.0.1",
     "humanize-units": "^2.0.4"
   },
-  "devDependencies": {
-    "@types/node": "^24",
-    "vitest": "^4.1.7"
-  },
   "peerDependencies": {
     "fastify": "^5.0.0"
   },
