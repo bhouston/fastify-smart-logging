@@ -2,10 +2,10 @@
   "name": "basic-example",
   "type": "module",
   "scripts": {
-    "build": "tsgo",
+    "build": "tsc",
     "dev": "node --no-warnings --experimental-strip-types --experimental-transform-types --watch --watch-preserve-output src/server.ts",
     "start": "node --no-warnings --experimental-strip-types --experimental-transform-types src/server.ts",
-    "tsc": "tsgo --noEmit",
+    "tsc": "tsc --noEmit",
     "test": "vitest run"
   },
   "dependencies": {
