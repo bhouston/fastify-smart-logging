@@ -10,21 +10,23 @@
     "plugin",
     "typescript"
   ],
-  "homepage": "https://github.com/bhouston/fastify-log-filters#readme",
+  "homepage": "https://github.com/bhouston/fastify-smart-logging#readme",
   "bugs": {
-    "url": "https://github.com/bhouston/fastify-log-filters/issues"
+    "url": "https://github.com/bhouston/fastify-smart-logging/issues"
   },
   "license": "MIT",
   "author": "Ben Houston <ben@ben3d.ca> (https://ben3d.ca)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bhouston/fastify-log-filters"
+    "url": "git+https://github.com/bhouston/fastify-smart-logging",
+    "directory": "packages/fastify-log-filters"
   },
   "files": [
     "dist",
     "package.json",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "type": "module",
   "main": "dist/index.js",
@@ -43,12 +45,11 @@
     "build": "tsc",
     "dev": "tsc -w --preserveWatchOutput --noEmitOnError",
     "test": "vitest run",
-    "test:watch": "vitest",
-    "release": "pnpm build && rm -rf ./publish && mkdir ./publish && cp ./package.json ./publish/package.json && cp ../../LICENSE ./publish/LICENSE && cp ../../README.md ./publish/README.md && cp -r ./dist ./publish/dist && test -f ./publish/README.md || (echo 'ERROR: README.md not found in publish folder' && exit 1) && npm publish ./publish/ --access public"
+    "test:watch": "vitest"
   },
   "dependencies": {
     "chalk": "^5.6.2",
-    "fastify": "^5.0.0",
+    "fastify": "^5.12.5",
     "fastify-plugin": "^5.0.1",
     "humanize-units": "^2.0.4"
   },

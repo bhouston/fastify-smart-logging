@@ -9,7 +9,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "fastify": "^5.0.0",
+    "fastify": "^5.12.5",
     "fastify-file-router": "^3.0.0",
     "fastify-log-filters": "workspace:*",
     "zod": "^4"
