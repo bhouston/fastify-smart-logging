@@ -51,7 +51,7 @@ importers:
         specifier: ^25.0.9
         version: 25.0.9(supports-color@7.2.0)(typescript@7.0.2)
       typescript:
-        specifier: ^7
+        specifier: ^7.0.2
         version: 7.0.2
       vite:
         specifier: ^8.1.3
