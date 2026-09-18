@@ -1,0 +1,63 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Validate and preview the release without publishing
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: npm-release
+  cancel-in-progress: false
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require dispatch from main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "::error::Release must be dispatched with --ref main (got ${{ github.ref }})."
+          exit 1
+  checks:
+    needs: guard
+    uses: ./.github/workflows/ci.yml
+    secrets: inherit
+  release:
+    needs: checks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v5
+        with:
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Release
+        run: pnpm release ${{ inputs.dry_run && '--dry-run' || '' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,9 +1,18 @@
 name: ci
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_call:
+
+permissions:
+  contents: read
 
 jobs:
   ci:
+    name: Quality checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -12,7 +21,6 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v5
         with:
-          version: 11.0.8
           run_install: false
 
       - name: Setup Node
@@ -33,5 +41,16 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      - name: Test
-        run: pnpm test
+      - name: Test with coverage
+        run: pnpm test:coverage
+
+      - name: Audit dependencies
+        run: pnpm audit --audit-level high
+
+      - name: Upload coverage reports to Codecov
+        if: github.event_name != 'workflow_call'
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage/lcov.info
+          fail_ci_if_error: false

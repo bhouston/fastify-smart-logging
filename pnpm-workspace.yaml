@@ -6,3 +6,9 @@ allowBuilds:
   esbuild: true
 
 link-workspace-packages: true
+
+overrides:
+  fast-uri: '>=4.1.5'
+  brace-expansion: '>=5.0.9'
+  nanoid: '>=3.3.18'
+  postcss: '>=8.5.18'
