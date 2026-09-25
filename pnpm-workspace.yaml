@@ -8,8 +8,8 @@ allowBuilds:
 link-workspace-packages: true
 
 minimumReleaseAgeExclude:
-  - fastify-file-router@3.0.0
-  - humanize-units@2.0.4
+  - fastify-file-router
+  - humanize-units
 
 overrides:
   fast-uri: '>=4.1.5'
