@@ -12,6 +12,7 @@ export default defineConfig({
   test: {
     watch: false,
     isolate: false,
+    fsModuleCache: true,
     include: sourceTestGlobs,
     exclude: [...configDefaults.exclude, '**/build/**', '**/publish/**', '**/.next/**', '**/.nx/**', '**/.turbo/**'],
     coverage: {
