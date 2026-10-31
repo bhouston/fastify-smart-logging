@@ -16,7 +16,7 @@ export type {
 } from './types.js';
 
 export const fastifyLogFilters = fp(
-  async (app: FastifyInstance, options: LogFiltersOptions = {}) => {
+  async (app: FastifyInstance, options: LogFiltersOptions) => {
     registerFastifyLogFilters(app, options);
   },
   {
