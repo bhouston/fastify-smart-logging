@@ -12,7 +12,7 @@
     "fastify": "^5.12.5",
     "fastify-file-router": "^3.0.0",
     "fastify-log-filters": "workspace:*",
-    "zod": "^4"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@vitest/ui": "^5.0.5"

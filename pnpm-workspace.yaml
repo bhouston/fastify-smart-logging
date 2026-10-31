@@ -16,3 +16,7 @@ overrides:
   brace-expansion: '>=5.0.9'
   nanoid: '>=3.3.18'
   postcss: '>=8.5.18'
+  handlebars: '>=4.7.10'
+  source-map-js: '>=1.2.2'
+  'undici@>=7.18.0 <7.30.1': '>=7.30.1 <8'
+  'undici@>=6.23.0 <6.29.1': '>=6.29.1 <7'
