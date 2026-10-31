@@ -36,11 +36,11 @@ export function formatBody(payload: unknown, maxBodyLength: number): string | un
       try {
         bodyStr = JSON.stringify(payload, null, 2);
       } catch {
-        bodyStr = String(payload);
+        bodyStr = Object.prototype.toString.call(payload);
       }
     }
   } else {
-    bodyStr = String(payload);
+    bodyStr = Object.prototype.toString.call(payload);
   }
 
   if (bodyStr.length > maxBodyLength) {
