@@ -137,6 +137,6 @@ export function registerFastifyLogFilters(app: FastifyInstance, options: LogFilt
     }
 
     // Delegate response handling to Fastify by sending the error.
-    void reply.send(err as never);
+    void reply.send(err);
   });
 }
