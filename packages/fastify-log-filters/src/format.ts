@@ -69,7 +69,7 @@ export function formatResponseLine(
   const parts: string[] = [
     `[${ctx.requestId}] ${statusStr}`,
     action.tag ? `[${action.tag}]` : undefined,
-    bodyStr ? chalk.dim(`${bodyStr}`) : undefined,
+    bodyStr ? chalk.dim(bodyStr) : undefined,
     len,
     `in ${dur}`,
   ].filter(Boolean) as string[];
