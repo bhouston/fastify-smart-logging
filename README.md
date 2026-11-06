@@ -1,14 +1,24 @@
-## fastify-log-filters monorepo
+<p align="center">
+  <a href="https://codecov.io/gh/bhouston/fastify-smart-logging"><img src="https://codecov.io/gh/bhouston/fastify-smart-logging/branch/main/graph/badge.svg" alt="coverage"></a>
+  <a href="https://discord.gg/fwupDN493R"><img src="https://img.shields.io/badge/chat-discord-blue?style=flat&logo=discord" alt="discord chat"></a>
+</p>
+<br/>
 
-[![NPM Package][npm]][npm-url]
-[![Tests][tests-badge]][tests-url]
-[![Coverage][coverage-badge]][coverage-url]
+# Fastify Smart Logging
 
-This repository contains the [`fastify-log-filters`](packages/fastify-log-filters) Fastify plugin — conditional, filtered request/response logging that hides boring fast 2xxs and highlights slow and failed requests — plus its demo applications.
+> Fastify request logging that hides the boring requests and shows the problems.
 
-See [packages/fastify-log-filters/README.md](packages/fastify-log-filters/README.md) for full documentation on the published package.
+- 🔇 Hides Fast Successful Requests
+- 🐢 Highlights Slow Requests
+- ❌ Logs Error Response Bodies
+- 🧩 Custom Log Filters
+- 📝 Bring Your Own Logger
 
-### Development
+This repository contains the [`fastify-log-filters`](packages/fastify-log-filters) Fastify plugin, which does conditional, filtered request and response logging: hide boring fast 2xx responses, highlight slow and failed requests. It also holds the plugin's demo application. The package is not yet published to npm.
+
+See the [package README](packages/fastify-log-filters/README.md) for usage and options.
+
+## Development
 
 ```bash
 pnpm install
@@ -21,13 +31,18 @@ pnpm format # oxfmt
 pnpm test # vitest
 ```
 
+## Releases
+
+See [RELEASING.md](RELEASING.md) for how releases are published and [GitHub Releases](https://github.com/bhouston/fastify-smart-logging/releases) for changes.
+
+## Contribution
+
+See [Contributing Guide](CONTRIBUTING.md).
+
+## License
+
+MIT
+
 ## Author
 
-[Ben Houston](https://ben3d.ca), Sponsored by [Land of Assets](https://landofassets.com)
-
-[npm]: https://img.shields.io/npm/v/fastify-log-filters
-[npm-url]: https://www.npmjs.com/package/fastify-log-filters
-[tests-badge]: https://github.com/bhouston/fastify-smart-logging/actions/workflows/ci.yml/badge.svg
-[tests-url]: https://github.com/bhouston/fastify-smart-logging/actions/workflows/ci.yml
-[coverage-badge]: https://codecov.io/gh/bhouston/fastify-smart-logging/branch/main/graph/badge.svg
-[coverage-url]: https://codecov.io/gh/bhouston/fastify-smart-logging
+[Ben Houston](https://ben3d.ca), Sponsored by [Land of Assets](https://landofassets.com).
