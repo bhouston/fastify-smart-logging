@@ -31,6 +31,10 @@ pnpm format # oxfmt
 pnpm test # vitest
 ```
 
+## Releases
+
+See [RELEASING.md](RELEASING.md) for how releases are published and [GitHub Releases](https://github.com/bhouston/fastify-smart-logging/releases) for changes.
+
 ## Contribution
 
 See [Contributing Guide](CONTRIBUTING.md).
