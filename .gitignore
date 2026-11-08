@@ -6,3 +6,7 @@ coverage
 .DS_Store
 
 
+
+# Agent tooling
+.claude/
+.codex/
